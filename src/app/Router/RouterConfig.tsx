@@ -2,6 +2,8 @@ import { ReactNode } from "react"
 import { Home } from "../../pages/Home/Home"
 import { Category } from "../../pages/Category/Category"
 import { DetailedItem } from "../../shared/components/DetailedItem/DetailedItem"
+import { Login } from "../../pages/Login/Login"
+import { PrivateRoute } from "../../shared/components/PrivateRoute/PrivateRoute"
 
 type route = {
 	key: number,
@@ -28,7 +30,7 @@ export const routes: route[] = [
 		path: '/category/:category',
 		disabled: false,
 		isMenu: true,
-		element: <Category/>
+		element: <PrivateRoute><Category/></PrivateRoute>
 	},
 	{
 		key: 2,
@@ -36,7 +38,15 @@ export const routes: route[] = [
 		path: '/category/:category/:id',
 		disabled: false,
 		isMenu: false,
-		element: <DetailedItem/>,
+		element: <PrivateRoute><DetailedItem/></PrivateRoute>,
+	},
+	{
+		key: 3,
+		label: 'Вход',
+		path: '/login',
+		disabled: false,
+		isMenu: false,
+		element: <Login/>,
 	}
 ]
 
