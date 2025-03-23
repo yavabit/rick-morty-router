@@ -1,2 +1,2 @@
-# Rick and Morty app router
+# Rick and Morty app
 
