@@ -15,7 +15,7 @@ export const Layout = ({ children }: { children?: ReactNode }) => {
 		const breadsCopy = [{title: <Link to={'/'}>Главная</Link>}]
 		let path = '';
 
-		locArr.map(item => {
+		locArr.forEach(item => {
 			path += '/'+item
 			breadsCopy.push({
 				title: <Link to={path}>{getCategoryName(item)}</Link>

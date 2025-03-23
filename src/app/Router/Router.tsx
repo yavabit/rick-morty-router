@@ -8,8 +8,7 @@ export const Router = () => {
 		<Routes>
 			{routes.map((item) => (
 				<Route key={item.key} path={item.path} element={item.element}>
-					{item.children &&
-						item.children.map((_item) => (
+					{	item.children?.map((_item) => (
 							<Route key={_item.key} path={_item.path} element={_item.element}/>
 						))}
 				</Route>

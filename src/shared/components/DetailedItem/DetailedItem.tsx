@@ -35,10 +35,10 @@ export const DetailedItem = () => {
 			<Card title={state.name}>
 				{Object.keys(state).map(key => {
 					if(['created', 'id'].includes(key) == false) {
-						return <p>{`${key}: ${state[key as keyof StateType]}`}</p>
+						return <p key={key}>{`${key}: ${state[key as keyof StateType]}`}</p>
 					}
 					if(key == 'created') {
-						return <p>{`${key}: ${new Date(state[key]).toLocaleDateString()}`}</p>
+						return <p key={key}>{`${key}: ${new Date(state[key]).toLocaleDateString()}`}</p>
 					}
 				})}
 			</Card>
