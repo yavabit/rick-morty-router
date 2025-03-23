@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useContext, useState } from "react";
+import { createContext, ReactNode, useCallback, useContext, useMemo, useState } from "react";
 
 type UserState = {
 	username: string
@@ -27,24 +27,25 @@ export const AuthProvider = ({ children }: {children: ReactNode}) => {
         return storedUser ? { username: storedUser  } : null;
 	})
 
-	const signin = (newUser: {username: string, remember: boolean}, callback: () => void) => {
+	const signin = useCallback((newUser: {username: string, remember: boolean}, callback: () => void) => {
 		setUser(newUser)
 		if(newUser.remember === true) {
 			localStorage.setItem('user', newUser.username)
 		}
 		callback()
-	}
+	}, []);
 
-	const signout = (callback: () => void) => {
+	const signout = useCallback((callback: () => void) => {
 		setUser(null)
+		localStorage.removeItem('user')
 		callback()
-	}
+	}, []);
 
-	const value = {
-		user: user,
-		signin,
-		signout
-	}
+	const value = useMemo(() => ({
+        user: user,
+        signin,
+        signout
+    }), [user, signin, signout]);
 
 	return (
 		<AuthContext.Provider value={value}>

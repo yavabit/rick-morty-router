@@ -5,17 +5,17 @@ import { DetailedItem } from "../../shared/components/DetailedItem/DetailedItem"
 import { Login } from "../../pages/Login/Login"
 import { PrivateRoute } from "../../shared/components/PrivateRoute/PrivateRoute"
 
-type route = {
+type RouteType = {
 	key: number,
 	label?: string
 	path: string
 	disabled: boolean
 	element?: ReactNode
 	isMenu?: boolean
-	children?: route[]
+	children?: RouteType[]
 }
 
-export const routes: route[] = [
+export const routes: RouteType[] = [
 	{
 		key: 0,
 		label: 'Главная',
